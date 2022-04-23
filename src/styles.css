@@ -1,0 +1,10 @@
+body {
+  font-family: sans-serif;
+}
+
+#board {
+  display: block;
+  margin : auto; /* to align center */
+  fill : transparent;
+  border: 1px solid black;
+}
