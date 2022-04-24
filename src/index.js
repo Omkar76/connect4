@@ -121,8 +121,6 @@
         circle.setAttribute('cy', radius * 2 * i + radius);
         circle.setAttribute('cx', radius * 2 * j + radius);
         circle.setAttribute('r', radius);
-        circle.setAttribute('stroke', '#60AB9A');
-        circle.setAttribute('stroke-width', '2%');
         circle.setAttribute('fill', 'white');
 
         boardRow.push(null);
