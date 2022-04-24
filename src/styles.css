@@ -13,6 +13,7 @@ h1 {
   margin: auto;
   text-shadow: 2px 2px 4px #0c3b30;
 }
+
 #turn{
   color: white;
   text-align: center;
@@ -28,9 +29,20 @@ h1 {
   margin: auto;
   padding: 20px;
 }
+
 #board {
-  display: block;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 1fr);
   margin: auto;
-  fill: transparent;
+  gap: 10px;
   background-color: #60AB9A;
+}
+
+.circle{
+  border-radius: 50%;
+  background-color: white;
+  border: 2px ridge black;
+  height: 70px;
+  width: 70px;
 }

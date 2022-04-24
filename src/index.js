@@ -11,38 +11,24 @@
   let finished = false;
   let player = 0;
 
-  const svg = document.querySelector("#board");
+  const board = document.querySelector("#board");
   const turn = document.querySelector('#turn');
-  svg.addEventListener("click", clickHandler);
-
   init();
   
   function clear() {
-    circles.forEach(row => row.forEach(circle => circle.setAttribute('fill', 'white')));
+    circles.forEach(row => row.forEach(circle => circle.style.backgroundColor='white'));
     boardState.forEach(row => row.fill(null));
     player = 0;
     finished = false;
     turn.textContent = `${colors[player]}'s turn`;
     turn.style.color = colors[player];
   }
-  function clickHandler(event) {
-    if (finished) {
-      clear();
-      return;
-    }
-    const x = event.x - svg.getBoundingClientRect().left;
-
-    console.debug(x)
-    const col = Math.floor(x / (width / cols));
-    console.debug(col)
-    insert(col);
-  }
 
   function insert(col) {
     for (let i = rows - 1; i >= 0; i--) {
       if (boardState[i][col] === null) {
         boardState[i][col] = player;
-        circles[i][col].setAttribute("fill", colors[player]);
+        circles[i][col].style.backgroundColor = colors[player];
 
         areFourConnected();
         checkDraw();
@@ -108,24 +94,24 @@
   }
 
   function init() {
-    board.setAttribute('height', height);
-    board.setAttribute('width', width);
     turn.textContent = `${colors[player]}'s turn`;
     turn.style.color = colors[player];
     for (let i = 0; i < rows; i++) {
       const boardRow = [];
       const circleRow = [];
       for (let j = 0; j < cols; j++) {
-        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-
-        circle.setAttribute('cy', radius * 2 * i + radius);
-        circle.setAttribute('cx', radius * 2 * j + radius);
-        circle.setAttribute('r', radius);
-        circle.setAttribute('fill', 'white');
-
+        const circle = document.createElement('div');
+        circle.classList.add("circle");
+        circle.addEventListener('click',   function(event) {
+          if (finished) {
+            clear();
+            return;
+          }
+          insert(j);
+        });
         boardRow.push(null);
         circleRow.push(circle);
-        svg.appendChild(circle);
+        board.appendChild(circle);
       }
       boardState.push(boardRow);
       circles.push(circleRow);
