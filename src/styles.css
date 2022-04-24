@@ -1,10 +1,34 @@
 body {
   font-family: sans-serif;
+  background-color: #60AB9A;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
+h1 {
+  font-size: 3rem;
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 4px #0c3b30;
+}
+#turn{
+  color: white;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+.container{
+  border: 10px solid #1c4f43;
+  border-radius: 10px;
+  display: inline-block;
+  margin: auto;
+  padding: 20px;
+}
 #board {
   display: block;
-  margin : auto; /* to align center */
-  fill : transparent;
-  border: 1px solid black;
+  margin: auto;
+  fill: transparent;
+  background-color: #60AB9A;
 }
