@@ -46,3 +46,18 @@ h1 {
   height: 70px;
   width: 70px;
 }
+
+@media (max-width:480px){
+  .circle{
+    width: 30px;
+    height: 30px;
+  }
+
+  #board {
+    gap: 3px;
+  }
+
+  .container{
+    padding: 10px;
+  }
+}
