@@ -3,7 +3,7 @@ body {
   background-color: #60AB9A;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
 }
 
 h1 {
@@ -17,12 +17,13 @@ h1 {
   text-align: center;
   font-size: 2rem;
   margin-bottom: 5px;
+  margin:auto;
 }
 
 .container{
   border: 10px solid #1c4f43;
   border-radius: 10px;
-  display: inline-block;
+  display: block;
   margin: auto;
   padding: 20px;
 }
