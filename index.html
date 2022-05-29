@@ -5,8 +5,8 @@
 	<title>Connect 4</title>
 	<link rel="stylesheet" href="./src/styles.css" />
 	<link rel="stylesheet" href="./src/alertifyjs/css/alertify.css" />
-	<link rel="stylesheet" href="./src/bootstrap-5.0.2-dist/css/bootstrap.min.css"/>
-	
+	<link rel="stylesheet" href="./src/bootstrap-5.0.2-dist/css/bootstrap.min.css" />
+
 	<script src="./src/alertifyjs/alertify.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
 	<meta charset="UTF-8" />
@@ -16,47 +16,46 @@
 
 	<div class="_container">
 		<h1>Connect 4</h1>
-		<div id="turn">Click on start new game</div>
-		<div id="board">
-		</div>
+		<div id="board"></div>
+		<div id="turn"></div>
 	</div>
 
-	<br/>
+	<br />
 
 	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Start new game</button>
+	<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+		data-bs-whatever="@mdo">Start new game</button>
 
 	<!-- Modal -->
 	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
-		  <div class="modal-content">
-			<div class="modal-header">
-			  <h5 class="modal-title" id="exampleModalLabel">Enter player names</h5>
-			  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			</div>
-			<div class="modal-body">
-			  <form>
-				<div class="mb-3">
-				  <label for="recipient-name" class="col-form-label">Player 1 name:</label>
-				  <input type="text" class="form-control" id="player1">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Enter player names</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
-				<div class="mb-3">
-				  <label for="message-text" class="col-form-label">Player 2 name:</label>
-				  <input type="text" class="form-control" id="player2"></textarea>
+				<div class="modal-body">
+					<form>
+						<div class="mb-3">
+							<label for="recipient-name" class="col-form-label">Player 1 name:</label>
+							<input type="text" class="form-control" id="player1">
+						</div>
+						<div class="mb-3">
+							<label for="message-text" class="col-form-label">Player 2 name:</label>
+							<input type="text" class="form-control" id="player2"></textarea>
+						</div>
+
+					</form>
 				</div>
-				
-			  </form>
-			</div>
-			<div class="modal-footer">
+				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 					<button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="playButton">Play</button>
 				</div>
-		  </div>
+			</div>
 		</div>
-	  </div>
+	</div>
 
-	<script src="src/index.js">
-	</script>
+	<script src="src/index.js"></script>
 	<script src="./src/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
 </body>
 
