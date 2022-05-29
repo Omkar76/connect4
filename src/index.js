@@ -1,41 +1,42 @@
 "use strict";
 (function () {
   const rows = 6, cols = 7;
-  const width = 500;
-  const height = 6 / 7 * width;
-  const margin = 20;
-  const radius = width / 7 / 2;
-  const colors = ["Red", "Blue"];
+
+  const players = [
+    { name: "Player1", color: "#ba143f" },
+    { name: "Player2", color: "#1471d5"}
+  ];
+
   const boardState = [];
   const circles = [];
-  let finished = false;
-  let player = 0;
+  let isRunning = null;
+  let player = Math.round(Math.random());
 
   const board = document.querySelector("#board");
   const turn = document.querySelector('#turn');
   init();
-  
+
   function clear() {
-    circles.forEach(row => row.forEach(circle => circle.style.backgroundColor='white'));
+    circles.forEach(row => row.forEach(circle => circle.style.backgroundColor = '#874790'));
     boardState.forEach(row => row.fill(null));
-    player = 0;
-    finished = false;
-    turn.textContent = `${colors[player]}'s turn`;
-    turn.style.color = colors[player];
+    player = Math.round(Math.random());
+    // isRunning = tr;
+    turn.textContent = `${players[player].name}'s turn`;
+    turn.style.color = players[player].color;
   }
 
   function insert(col) {
     for (let i = rows - 1; i >= 0; i--) {
       if (boardState[i][col] === null) {
         boardState[i][col] = player;
-        circles[i][col].style.backgroundColor = colors[player];
+        circles[i][col].style.backgroundColor = players[player].color;
 
         areFourConnected();
         checkDraw();
         player = player === 0 ? 1 : 0;
-        if (!finished) {
-          turn.textContent = `${colors[player]}'s turn`;
-          turn.style.color = colors[player];
+        if (isRunning == true) {
+          turn.textContent = `${players[player].name}'s turn`;
+          turn.style.color = players[player].color;
         }
         return;
       }
@@ -50,14 +51,14 @@
       }
     }
     alertify.alert("It's a draw!");
-    finished = true;
+    isRunning = null;
   }
   function areFourConnected() {
     // Check horizontally
     for (let i = rows - 1; i >= 0; i--) {
       for (let j = 0; j < cols - 3; j++) {
         if (boardState[i][j] == player && boardState[i][j + 1] == player && boardState[i][j + 2] == player && boardState[i][j + 3] == player) {
-          finished = true;
+          isRunning = false;
         }
       }
     }
@@ -67,7 +68,7 @@
       for (let j = 0; j < cols; j++) {
 
         if (boardState[i][j] == player && boardState[i - 1][j] == player && boardState[i - 2][j] == player && boardState[i - 3][j] == player) {
-          finished = true;
+          isRunning = false;
         }
       }
 
@@ -77,37 +78,54 @@
     for (let i = 3; i < rows; i++) {
       for (let j = 0; j < cols - 3; j++) {
         if (boardState[i][j] == player && boardState[i - 1][j + 1] == player && boardState[i - 2][j + 2] == player && boardState[i - 3][j + 3] == player)
-          finished = true;
+          isRunning = false;
       }
     }
     // descendingDiagonalCheck
     for (let i = 3; i < rows; i++) {
       for (let j = 3; j < cols; j++) {
         if (boardState[i][j] == player && boardState[i - 1][j - 1] == player && boardState[i - 2][j - 2] == player && boardState[i - 3][j - 3] == player)
-          finished = true;
+          isRunning = false;
       }
     }
 
-    finished && alertify
-      .alert(colors[player] + " Won! Click on board to reset");
-    turn.textContent = `${colors[player]} won!`
+    if(isRunning==false){
+      alertify.alert(players[player].name + " Won! Click on board to reset");
+      turn.textContent = `${players[player].name} won!`
+    }
   }
 
   function init() {
-    turn.textContent = `${colors[player]}'s turn`;
-    turn.style.color = colors[player];
+    // turn.textContent = `${players[player].name}'s turn`;
+    // turn.style.color = players[player].color;
+
+    document.querySelector('#playButton').addEventListener('click', ()=>{
+      /** @type {HTMLInputElement}  */
+      let player1 = document.querySelector("#player1");
+
+       /** @type {HTMLInputElement}  */
+       let player2 = document.querySelector("#player2");
+
+       players[0].name = player1.value?.trim() || "Player1";
+       players[1].name = player2.value?.trim() || "Player2";
+
+       isRunning = true;
+       clear();
+       console.log(players)
+    });
+
     for (let i = 0; i < rows; i++) {
       const boardRow = [];
       const circleRow = [];
       for (let j = 0; j < cols; j++) {
         const circle = document.createElement('div');
         circle.classList.add("circle");
-        circle.addEventListener('click',   function(event) {
-          if (finished) {
-            clear();
+        circle.addEventListener('click', function () {
+          if (isRunning===null) {
             return;
+          }else if(isRunning===true){
+            insert(j);
           }
-          insert(j);
         });
         boardRow.push(null);
         circleRow.push(circle);

@@ -1,6 +1,6 @@
 body {
   font-family: sans-serif;
-  background-color: #60AB9A;
+  background-color: #874790 !important;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,8 +22,9 @@ h1 {
   margin:auto;
 }
 
-.container{
-  border: 10px solid #1c4f43;
+._container{
+  border: 10px solid #2D142C;
+  background-color: #5c2942 ;
   border-radius: 10px;
   display: block;
   margin: auto;
@@ -36,13 +37,13 @@ h1 {
   grid-template-rows: repeat(6, 1fr);
   margin: auto;
   gap: 10px;
-  background-color: #60AB9A;
+  /* background-color: #60AB9A; */
 }
 
 .circle{
+  background:#874790 ;
   border-radius: 50%;
-  background-color: white;
-  border: 2px ridge black;
+  border: 2px ridge #F36F38;
   height: 70px;
   width: 70px;
 }
