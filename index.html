@@ -13,19 +13,39 @@
 
 <body>
 
-	<div class="_container">
-		<h1>Connect 4</h1>
-		<div id="board"></div>
-		<div id="turn"></div>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">Connect4</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+				aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link" href="how-to-play.html">How to play</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="about.html">About</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container d-flex flex-column justify-content-center">
+		<div class="_container mt-4">
+			<div id="board"></div>
+			<div id="turn"></div>
+		</div>
+
+		<br />
+
+		<!-- Button to trigger player name input modal -->
+		<button type="button" class="btn btn-primary m-auto" data-bs-toggle="modal"
+			data-bs-target="#player-name-input-modal">
+			Start new game
+		</button>
 	</div>
-
-	<br />
-
-	<!-- Button to trigger player name input modal -->
-	<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#player-name-input-modal">
-		Start new game
-	</button>
-
 	<!-- Modal for player name input-->
 	<div class="modal fade" id="player-name-input-modal" tabindex="-1" aria-labelledby="playernamelabel"
 		aria-hidden="true">
@@ -57,7 +77,8 @@
 	</div>
 
 	<!-- Winner modal -->
-	<div class="modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" id="winner-modal" aria-hidden="true">
+	<div class="modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" id="winner-modal"
+		aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -69,7 +90,8 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="play-again">Play again</button>
+					<button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="play-again">Play
+						again</button>
 				</div>
 			</div>
 		</div>
