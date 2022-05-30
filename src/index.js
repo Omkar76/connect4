@@ -20,7 +20,7 @@
     circles.forEach(row => row.forEach(circle => circle.style.backgroundColor = '#874790'));
     boardState.forEach(row => row.fill(null));
     player = Math.round(Math.random());
-    // isRunning = tr;
+
     turn.textContent = `${players[player].name}'s turn`;
     turn.style.color = players[player].color;
   }
@@ -42,7 +42,8 @@
       }
     }
 
-    alertify.alert("Column already full");
+    const columnFullToast = new bootstrap.Toast(document.querySelector("#column-full-toast"),{delay:1000});
+    columnFullToast.show();
   }
   function checkDraw() {
     for (let i = 0; i < cols; i++) {
@@ -50,8 +51,9 @@
         return;
       }
     }
-    alertify.alert("It's a draw!");
-    isRunning = null;
+    const drawModal = new bootstrap.Modal(document.querySelector("#draw-modal"));
+    drawModal.show();
+    isRunning = false;
   }
   function areFourConnected() {
     // Check horizontally
@@ -89,16 +91,16 @@
       }
     }
 
+    //game ended
     if(isRunning==false){
-      alertify.alert(players[player].name + " Won! Click on board to reset");
-      turn.textContent = `${players[player].name} won!`
+      document.querySelector("#turn").textContent = `${players[player].name} Won!`;
+      document.querySelector("#winner-name").textContent = players[player].name;
+      const winnerModal = new bootstrap.Modal(document.querySelector("#winner-modal"));
+      winnerModal.show();
     }
   }
 
   function init() {
-    // turn.textContent = `${players[player].name}'s turn`;
-    // turn.style.color = players[player].color;
-
     document.querySelector('#playButton').addEventListener('click', ()=>{
       /** @type {HTMLInputElement}  */
       let player1 = document.querySelector("#player1");
@@ -112,6 +114,11 @@
        isRunning = true;
        clear();
        console.log(players)
+    });
+
+    document.querySelector('#play-again').addEventListener('click',()=>{
+      clear();
+      isRunning = true;
     });
 
     for (let i = 0; i < rows; i++) {

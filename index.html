@@ -22,16 +22,18 @@
 
 	<br />
 
-	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
-		data-bs-whatever="@mdo">Start new game</button>
+	<!-- Button to trigger player name input modal -->
+	<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#player-name-input-modal">
+		Start new game
+	</button>
 
-	<!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<!-- Modal for player name input-->
+	<div class="modal fade" id="player-name-input-modal" tabindex="-1" aria-labelledby="playernamelabel"
+		aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Enter player names</h5>
+					<h5 class="modal-title" id="playernamelabel">Enter player names</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
@@ -55,6 +57,54 @@
 		</div>
 	</div>
 
+	<!-- Winner modal -->
+	<div class="modal" tabindex="-1" id="winner-modal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Game Over!</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<p><span id="winner-name"></span> Won! </p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="play-again">Play again</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Draw modal -->
+	<div class="modal" tabindex="-1" id="draw-modal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Game Over!</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<p>Its a draw!</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="play-again">Play
+						again</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Column full toast -->
+	<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+		<div id="column-full-toast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+			<div class="toast-header">
+				<strong class="me-auto">Column already full</strong>
+				<button type="button" class="btn-close float-end" data-bs-dismiss="toast" aria-label="Close"></button>
+			</div>
+		</div>
+	</div>
 	<script src="src/index.js"></script>
 	<script src="./src/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
 </body>
